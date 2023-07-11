@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- Благодаря аннотации ниже, спринг будет искать бины в пакете "java" -->
+    <!-- классы бины должны быть отмеченны аннотацией component -->
+    <!-- Если не указывать явно название для компонента, то названием компонента будет название класса с мал буквы -->
+    <context:component-scan base-package="ru.spring.example" />
+
+    <context:property-placeholder location="classpath:service.properties"/>
+</beans>

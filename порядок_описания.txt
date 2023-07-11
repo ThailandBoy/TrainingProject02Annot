@@ -1,0 +1,51 @@
+В этом проекте будем работать через Spring core.
+Конфигурационный файл сделан через xml + аннотации.
+Следующий проект сконфигурирован через JavaConfig.
+1. Собрать проект через мавен, архетип webapp
+2. в pom.xml импортируем нужные зависимости
+    - spring-core; spring-beans; spring-context
+3. создать директорию "resources"
+    - пометить как "resources root"
+    - все файлы которые мы поместим в эту папку, они будут доступны в нашем коде.
+        Таково назначение данной папки ресурсов.
+    - в этой папке будет размещена наша конфигурация спринга
+4. создать папку "java", в ней будет весь наш java код
+    - пометить папку как "sources root", так мы дадим понять "идее" что там будет храниться java код
+5. создать папку в папке java -> ru.alishev.springcourse
+6. в папке ru.alishev.springcourse создем java класс TestBean
+7. TestBean - теоретическое описание
+8. Переход в папку "resources". Здесь создадим конфигурационный файл спринга. "ApplicationContext.xml"
+    Из https://gist.github.com/NeilAlishev/a7be183f5c0d612cc6ebf287e129bed5
+    Копируем и вставляем конфиг.
+        <context:component-scan base-package="ru.spring.example" />
+    - теор. описание
+9. Конфиг файл для спринга готов, теперь нужно чтобы:
+    - спринг прочитал этот файл
+10. Использование @Autowired для dependency injection
+11. Использование @Qualifier - уточнение, для уточнения зависимости
+12. На замену init-method и destroy-method есть @PostConstruct и @PreDestroy
+    У этих методов:
+        - любой мод. доступа;
+        - любой тип возвр. знач но чаще всего void;
+        - любое название метода;
+        - обязательно без параметров
+    @PostConstruct и @PreDestroy должны быть указанны в классе, над нужным методом начала работы, конца работы
+    // Эти аннотации оказались устаревшей штукой, забью тогда
+13. Работа с аннотацией @Value("")
+    - для этого в конф. файле должен быть указан:
+        <context:property-placeholder location="classpath:service.properties"/>
+    - в service.properties, должны быть пары ключ-значение. Типа:
+                key             value
+        carService.available = true
+        carService.count = 5
+        humanService.available = true
+        humanService.alive = true
+    - Чтобы ввести полученные из файла значения, нужно использовать запись
+        @Value("${carService.available}")
+
+
+
+
+
+
+
